@@ -1,2 +1,2 @@
-# systemdesign
-I am noting all my thoughts while learning system design
+# What is this repo? 
+I have total 12 years experience in software industry. Most of my experience is on client side, once or twice in my experience I touched server side technologies but never deeply worked. If I give interview today, I can crack data structures and algorithms questions and C/C++/Java questions but I am less confident in System Design which is common for this experience. So today I have started System Design. I am reading through "System Design Interview" 2nd edition by Alex Xu. I am taking all my notes here, at the same noting down all my thoughts along the way.
