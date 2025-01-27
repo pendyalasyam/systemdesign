@@ -29,4 +29,8 @@ Obvious answer is I want to use the software that is already doing all this for 
 Web Server Software: Apache HTTP Server, NGINX, etc.,
 
 # How Clients Connect To Web Server ?
-Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server.
+Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
+
+
+![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
+
