@@ -27,3 +27,6 @@ Obvious answer is I want to use the software that is already doing all this for 
 
 
 Web Server Software: Apache HTTP Server, NGINX, etc.,
+
+# How Client Connects To Web Server ?
+** Server should be running on public ip
