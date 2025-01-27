@@ -24,3 +24,6 @@ A web server is computer software and underlying hardware that accepts requests 
 
 
 Obvious answer is I want to use the software that is already doing all this for me. Web Server!!
+
+
+Web Server Software: Apache HTTP Server, NGINX, etc.,
