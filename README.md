@@ -10,16 +10,17 @@ A web server is computer software and underlying hardware that accepts requests 
 
 **Thought:** Why cant we simply write a server program using socket program that accepts connections from clients and serve the requests?
 
-**Counter1:** Do you want to handle html request parsing?
+***Counter1:*** Do you want to handle html request parsing?
 
-**Counter2:** If you require security for your solution, do you want to implement SSL in your application ?
+***Counter2:*** If you require security for your solution, do you want to implement SSL in your application ?
 
-**Counter3:** Suppose traffic to your server is increasing. You need to improve the performance of your server. So you may need to bring in techniques like Asynchronus IO, Multi-Threading, Event Loops, etc. Are you ready to implement all of this?
+***Counter3:*** Suppose traffic to your server is increasing. You need to improve the performance of your server. So you may need to bring in techniques like Asynchronus IO, Multi-Threading, Event Loops, etc. Are you ready to implement all of this?
 
-**Counter4:** As your server is implemented from scratch, it needs to undergo heavy testing. Lot of testing cost. Are you ready to pay for this ?
+***Counter4:*** As your server is implemented from scratch, it needs to undergo heavy testing. Lot of testing cost. Are you ready to pay for this ?
 
-**Counter5:** You need to adhere to HTML standards to be able to survive in the internet. Do you want to do this maintainance?
+***Counter5:*** You need to adhere to HTML standards to be able to survive in the internet. Do you want to do this maintainance?
 
-**Counter6:** OR YOU SIMPLY WANT TO USE SOME SOFTWARE THAT IS ALREADY DOING ALL OF THE ABOVE AND BATTLE TESTED?
+***Counter6:*** OR YOU SIMPLY WANT TO USE SOME SOFTWARE THAT IS ALREADY DOING ALL OF THE ABOVE AND BATTLE TESTED?
+
 
 Obvious answer is I want to use the software that is already doing all this for me. Web Server!!
