@@ -10,7 +10,7 @@ A web server is computer software and underlying hardware that accepts requests 
 
 **Thought:** Why cant we simply write a server program using socket program that accepts connections from clients and serve the requests?
 
-***Counter1:*** Do you want to handle html request parsing?
+- ***Counter1:*** Do you want to handle html request parsing?
 
 ***Counter2:*** If you require security for your solution, do you want to implement SSL in your application ?
 
