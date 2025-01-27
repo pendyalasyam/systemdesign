@@ -34,3 +34,4 @@ Server should be running on public ip. But it is difficult for users to remember
 
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
+To be able to be resolved by DNS, our website should be registered to DNS using DNS registars like GoDaddy, Namecheap, Google Domains, or Bluehost. Like calling some website with some data, we can not simply contact DNS TLD servers and put our website name there. If we are given a chance, I can name website as google.com. 
