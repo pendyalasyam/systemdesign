@@ -6,19 +6,32 @@ Any business where owner of the business serving his clients over internet start
 
 ![image](https://github.com/user-attachments/assets/7f7ffe18-5ae6-4d99-8a44-d08e3484c7a5)
 
-If I am a business owner and also a computer science studying student, I would have start developing this some thing like below ( Suppose I am developing client-server architecture baseed calculator where clients can pass values and what operation to do, And as Server I do given calculation and respond with answer).
+Assume you are a software developer and a photographer came to you with thousands of photos of his wild photography. He asked you a to develop a client-server based solution where client applications can be given to users and server application he runs. He uploads all his latest photos and users can download them and they can use as wallpapers in their computers.
 
-I would have written client and server programs in C language using socket programming and I would have made these completely command prompt driven (because for me its difficult to develop GUI applications in C). Though it seems to be straight forward at first, there are multiple concerns here.
+If I were you and a college going student, I would have start developing this solution some thing like below.
 
-1. Server should parse the command that client is willing to do, understand and calculate the value and send the response. There should be an agreement between client and server that command should follow some pre-agreed format and then only server will understand the command and serve(Like to get he addition of 1 and 2, client should 1 2 1 where last 1 is operation type. If operation type is 2 then server may do subtraction and send the response). Similary there should be also an agreement for response text then only client will understand the response (For example if server sends 1 2 response for the division operation, what is 1 and what is 2. There should be an agreeement that first number is quotient and second number is remainder, or fist number is remainder and second nubmer is quotient). As the number of operations that server supports increases, parsing becomes more and more complex.
-2. When client is sending command, there can be problems in the command. Command may not be in the expected format. How server informs the this error.
-3. If your calculator supports only integers and client sends floating numbers then how server will send the response.
-4. If your server is not able to accept more socket connections, how will server send the response that he is busy and ask client to retry?
-5. If server is completely down, how client shows this information to user?
-6. If there is some maintainance in your server and you want inform your clients when they requested for service. How will server send the response?
-and more
+I would have written client and server programs in C language using socket programming and I would have made these completely command prompt driven
 
-All of these concerns are there for any client <-> server based architecture running over internet. So to address all of these problems, people came up with something called Protocol. Protocol is set of rules guidelines for particular kind of solution. In order to respond that client requested command is not in expected format, server send "400 Bad Request". Similarly if server is currently under maintainance server can inform its clients with "500 Service Unavailable". When solution developers adhere to protocol, then those solutions will interoperable with any other solutions that follow same protocol. If many people follow the protocol then generally somebody has already implemented that protocol and we can simply consume in our application.
+1. Client Application: To request all images it sends text "Give me all images"
+2. Client Application: To request particular image "Give me image <image_name>"
+3. Server Application: To answer "Give me all images", it will send all image names.
+4. Server Application: To answer "Give me image <image_name>", it will send image with the name <image_name>.
+   
+Though this solution seems straight forward, there are multiple complexities here.
+
+1. The client command should parsed properly.
+2. If client command is not expected format, server has to inform that command is not proper.
+3. If client asked for image that is not there, server has to informat that asked image is not existing.
+4. If server is already serving maximum users it can server, server has to send some response that is currently busy.
+5. If server is currently under maintainance, server has to send some response that is currently under maintainance.
+6. Once you address all these concerns in your solution, tomorrow photographer want to generate money from his photography. So he starts giving premium content only to those who paid him money. So we need a way how server identifies the user to serve the content. There should be a way client can send username. On receiving user name, server checks if user has access to image and then serve the image. If user dont have access, then server should be having a way to inform the user that he doesnt have enough previlages.
+
+
+All of these concerns are there with any client <-> server based solution serving the content. If multiple business owners(one business owner serving images, one business owner serving videos, one business owner, text articles, and so on) wants similar solutions and goes to different software developers, all of those software developers fianlly has to develope similar modules except that the content is different. Solution to avoid this duplicate effort is software developers identified this duplicacy and all they came togehter and came up with a solution outlining how client request should look like to request a image/video/any other resource and how server should send the response and how server should inform the error. Now that all agreed on some format, if some developer developed a solution for images... now the same can be used for videos with few/some modifications.
+
+The rules that software engineers agreed on how a client request should look and how shold be the response and how an error is informed is collectively called as Protocol.
+
+***A protocol is a set of rules that define how data is transmitted and received over a network***
 
 The problem with C based applications is that whenever we change client code we need to compile the application and distribute to clients. All computers are not same, they are different based on their processor types. So to deliver your new client application to all users, you need to compile your client code to all different variations of your clients processor and distribute them accordingly. Users will not able to use your new version of the client until users update the application. In order to solve this problem, we need a technology which doesnt require application compilation to distribute it to the users. One solution is you can develop one base software that is compiled and distribued once based on users processors and all further application logic of can be downloaded on the fly and can be executed by that base software. This base software is called Web Browser. Since the applications generally containt GUI elements, these elements are mentioned with markup language. Web browser on receiving this application logic written in markup language parses the markup and show the elements to the users. 
 
