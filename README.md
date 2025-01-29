@@ -1,7 +1,7 @@
 # What is this repo? 
 I have total 12 years experience in software industry. Most of my experience is on client side, once or twice in my experience I touched server side technologies but never deeply worked. If I give interview today, I can crack data structures and algorithms questions and C/C++/Java questions but I am less confident in System Design which is common for this experience. So today I have started System Design. I am reading through "System Design Interview" 2nd edition by Alex Xu. I am taking all my notes here, at the same time noting down all my thoughts along the way.
 
-# Protocol, HTML, HTTP, Web Browser, Web Server
+# Protocol
 Any business where owner of the business serving his clients over internet starts with simple architecture like below
 
 ![image](https://github.com/user-attachments/assets/7f7ffe18-5ae6-4d99-8a44-d08e3484c7a5)
@@ -33,6 +33,7 @@ The rules that software engineers agreed on how a client request should look and
 
 ***A protocol is a set of rules that define how data is transmitted and received over a network***
 
+# HTML, HTTP, Web Browser
 The problem with C based applications is that whenever we change client code we need to compile the application and distribute to clients. All computers are not same, they are different based on their processor types. So to deliver your new client application to all users, you need to compile your client code to all different variations of your clients processor and distribute them accordingly. Users will not able to use your new version of the client until users update the application. In order to solve this problem, we need a technology which doesnt require application compilation to distribute it to the users. One solution is you can develop one base software that is compiled and distribued once based on users processors and all further application logic of can be downloaded on the fly and can be executed by that base software. This base software is called ***Web Browser***. Since the applications generally containt GUI elements, these elements are mentioned with markup language. Web browser on receiving this application logic written in markup language parses the markup and show the elements to the users. 
 
 HTML is this markup language and HTTP is the protocol that mentions the rules that mentions how to transfer this markup text and what are the responses texts to different kinds of errors while executing this HTML and what are the request/response formats.
