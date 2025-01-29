@@ -18,7 +18,7 @@ I would have written client and server programs in C language using socket progr
 6. If there is some maintainance in your server and you want inform your clients when they requested for service. How will server send the response?
 and more
 
-All of these concerns are there for any client <-> server based architecture running over internet. So to address all of these problems, people came up with something called Protocol. Protocol is set of guidelines for particular kind of solution. In order to respond that client requested command is not in expected format, server send "400 Bad Request". Similarly if server is currently under maintainance server can inform its clients with "500 Service Unavailable". When solution developers adhere to protocol, then those solutions will interoperable with any other solutions that follow same protocol. 
+All of these concerns are there for any client <-> server based architecture running over internet. So to address all of these problems, people came up with something called Protocol. Protocol is set of rules guidelines for particular kind of solution. In order to respond that client requested command is not in expected format, server send "400 Bad Request". Similarly if server is currently under maintainance server can inform its clients with "500 Service Unavailable". When solution developers adhere to protocol, then those solutions will interoperable with any other solutions that follow same protocol. 
 
 
 
