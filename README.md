@@ -27,7 +27,7 @@ Though this solution seems straight forward, there are lot of things you need to
 5. If server is currently under maintainance, server has to send some response that is currently under maintainance.
 6. Once you address all these concerns in your solution, tomorrow photographer want to generate money from his photography. So he starts giving premium content only to those who paid him money. So we need a way how server identifies the user to serve the content. There should be a way client can send username. On receiving user name, server checks if user has access to image and then serve the image. If user dont have access, then server should be having a way to inform the user that he doesnt have enough previlages.
 
-Now suppose if another person and asked your friend to develop client<->server based solution for him for his all of his travelling videos. Users of the solution can download the videos from the server and watch. Your friend, if he is also a college going student, he may approach solving the problem like me 
+Now suppose if another person came and asked your friend to develop client<->server based solution for him for his all of his travelling videos. Users of the solution can download the videos from the server and watch. Your friend, if he is also a college going student, he may approach solving the problem like me 
 
 1. Client Application: To request all images it sends text "Provide all videos"
 2. Client Application: To request particular image "Provide video <video_name>"
