@@ -82,6 +82,12 @@ There are different kind of responses each indicating particular of kind of resu
 * 4xx client error – the request contains bad syntax or cannot be fulfilled
 * 5xx server error – the server failed to fulfil an apparently valid request
 
+# Brining up basic web solution
+* Installing Nginx
+* Index.html
+* Opening with browser
+
+
 # How Clients Connect To Web Server ?
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
 
