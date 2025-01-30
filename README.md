@@ -61,6 +61,25 @@ See as service becoming more and more popular, you need to implement more and mo
 
 **Examples of Web Servers:** Nginx, Apache HTTP Server aka httpd.
 
+***HTTP Protocol***
+HTTP Protocol is the set of rules and guidelines used to transfer resources like html documents and other kind of documents between client and server in client-server architecture based systems. As per the protocol, clients needing resources send REQUEST to server and server responds with RESPONSES either with requested resources or errors in case of failures.
+
+There are different kinds of REQUESTs each designed for serving different kind of request client want to do with resource. Of all the methods supported by HTTP, following 4 are important
+
+* GET: Read resource from server (Safe/Idempotent)
+* PUT: Create the resource on the server (Unsafe/Not-Idempotent)
+* POST: Update resource on the server (Unsafe/Idempotent)
+* DELETE: Delete the resource in server (Unsafe/Idempotent)
+
+Idempotent: If same operation is done multiple times, the effect is same.
+
+There are different kind of responses each indicating particular of kind of result process the request.
+* 1xx informational response – the request was received, continuing process
+* 2xx successful – the request was successfully received, understood, and accepted
+* 3xx redirection – further action needs to be taken in order to complete the request
+* 4xx client error – the request contains bad syntax or cannot be fulfilled
+* 5xx server error – the server failed to fulfil an apparently valid request
+
 # How Clients Connect To Web Server ?
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
 
