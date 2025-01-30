@@ -1,5 +1,7 @@
 As a software engineer with 12 years of experience when I see students just of out college making youtube videos on System Design, one side I was inspired and on the other side I felt ashamed because still I dont know those topics. Most of experience is on building client side applications, meaning I just need to make sure client application is perfomant with out any crashes. So I became strong in multithreading concepts, data structures and algorithms, mutexes, semaphores, locks and many other concepts that are necessary to build robust performant client side application. But I dont want to lag behind in the industry and I dont want to simply sit before my other colleagues who boast about system design skills with that expression on my face that I dont know. So I decided to learn System Design in a systematic & practical way. All the content of this blog is just the journey of me learning System Design from very basic and my thoughts while learning the System Design. I am preparing this blog for myself to revisit in future, but at the same time I hope it will also help you. Happy learning!!
 
+
+
 Solution for any business problem where users of the business connect to owner via internet starts with simple architecture like below.  
 ![image](https://github.com/user-attachments/assets/7f7ffe18-5ae6-4d99-8a44-d08e3484c7a5)
 
