@@ -41,16 +41,26 @@ You see, if people sit together and agree to follow one single method to solve s
 
 **Protocol: is a set of rules that define how data is transmitted and received over a network**
 
-# HTML, HTTP, Web Browser
-The problem with C based applications is that whenever we change client code we need to compile the application and distribute to clients. All computers are not same, they are different based on their processor types. So to deliver your new client application to all users, you need to compile your client code to all different variations of your clients processor and distribute them accordingly. Users will not able to use your new version of the client until users update the application. In order to solve this problem, we need a technology which doesnt require application compilation to distribute it to the users. One solution is you can develop one base software that is compiled and distribued once based on users processors and all further application logic of can be downloaded on the fly and can be executed by that base software. This base software is called ***Web Browser***. Web browser generally knows how to draw different kinds of Graphics. As per you application needs, in your application you just need to mention what all graphics you need, where you want to place them and what should be their properties. Web Browser on downloading this application logic, draws required graphics on screen as per the configuration.
+# HTML, HTTP, Web Browser, Web Server
+The problem with C based client-side applications is that whenever we change client code we need to compile the application and distribute to clients. All computers are not same, they are different based on their processor types. So to deliver your new client application to all users, you need to compile your client code to all different variations of your clients processor and distribute them accordingly. Users will not able to use your new version of the client until users update the application. In order to solve this problem, we need a technology which doesnt require application compilation to distribute it to the users. One solution is you can develop one base software that is compiled and distribued once based on users processors and all further application logic of can be downloaded on the fly and can be executed by that base software. This base software is called ***Web Browser***. Web browser generally knows how to draw different kinds of Graphics. As per you application needs, in your application you just need to mention what all graphics you need, where you want to place them and what should be their properties. Web Browser on downloading this application logic, draws required graphics on screen as per the configuration.
 
 You can see in application logic, we are just mentioning (or marking) what all graphics we need and their properties. So the language that is used to write this application logic is called markup language. Hyper-Text-Markup-Language (HTML) is one such language.
 
 And the protocol that outlines how HTML is transfered between client and server and what responses are sent in success/failure cases is Hyper-Text-Transport-Protocol (HTTP). 
 
-# HTTPS
+**Examples of Web Browsers:** Google Chrome, Microsoft Edge, Safari, etc.,
 
-# Web Server
+Coming on to server side, it may seem simple to send Resources to clients. But once this is deployed, we will start seeing actual problems.
+* Clients may send requests in unexpected format. Server needs to handle this and inform the clients.
+* Clients may send wrong data. Server needs to handle this and inform the clients.
+* One hacker can send lot of requests to the server to make server busy with serving his requests and not getting enough time to serve legitimate users.
+* If your service is becoming popular, you may receive lot of requests and to serve them you may need to bring concepts like multi-threading, event loops etc.
+* If your service become popular you may want monetize it. So you want to serve only to paid users. Meaning you need to provide access to only people who have access (authorized users).
+
+See as service becoming more and more popular, you need to implement more and more requirements. And these requirements for every service over the internet. So a reusable software is developed to deal with all the basic requirements. That is called **Web Server**.
+
+**Examples of Web Servers:** Nginx, Apache HTTP Server aka httpd.
+
 A web server is computer software and underlying hardware that accepts requests via HTTP (the network protocol created to distribute web content) or its secure variant HTTPS. A user agent, commonly a web browser or web crawler, initiates communication by making a request for a web page or other resource using HTTP, and the server responds with the content of that resource or an error message. A web server can also accept and store resources sent from the user agent if configured to do so.
 
 **Thought: Why cant we simply write a server program using socket program that accepts connections from clients and serve the requests?**
