@@ -61,28 +61,6 @@ See as service becoming more and more popular, you need to implement more and mo
 
 **Examples of Web Servers:** Nginx, Apache HTTP Server aka httpd.
 
-A web server is computer software and underlying hardware that accepts requests via HTTP (the network protocol created to distribute web content) or its secure variant HTTPS. A user agent, commonly a web browser or web crawler, initiates communication by making a request for a web page or other resource using HTTP, and the server responds with the content of that resource or an error message. A web server can also accept and store resources sent from the user agent if configured to do so.
-
-**Thought: Why cant we simply write a server program using socket program that accepts connections from clients and serve the requests?**
-
-***Counter1:*** Do you want to handle html request parsing?
-
-***Counter2:*** If you require security for your solution, do you want to implement SSL in your application ?
-
-***Counter3:*** Suppose traffic to your server is increasing. You need to improve the performance of your server. So you may need to bring in techniques like Asynchronus IO, Multi-Threading, Event Loops, etc. Are you ready to implement all of this?
-
-***Counter4:*** As your server is implemented from scratch, it needs to undergo heavy testing. Lot of testing cost. Are you ready to pay for this ?
-
-***Counter5:*** You need to adhere to HTML standards to be able to survive in the internet. Do you want to do this maintainance?
-
-***Counter6:*** OR YOU SIMPLY WANT TO USE SOME SOFTWARE THAT IS ALREADY DOING ALL OF THE ABOVE AND BATTLE TESTED?
-
-
-Obvious answer is I want to use the software that is already doing all this for me. Web Server!!
-
-
-Web Server Software: Apache HTTP Server, NGINX, etc.,
-
 # How Clients Connect To Web Server ?
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
 
