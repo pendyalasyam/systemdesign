@@ -1,10 +1,9 @@
-# What is this repo? 
-I have total 12 years experience in software industry. Most of my experience is on client side, once or twice in my experience I touched server side technologies but never deeply worked. If I give interview today, I can crack data structures and algorithms questions and C/C++/Java questions but I am less confident in System Design which is common for this experience. So today I have started System Design. I am reading through "System Design Interview" 2nd edition by Alex Xu. I am taking all my notes here, at the same time noting down all my thoughts along the way.
+As a software engineer with 12 years of experience when I see students just of out college making youtube videos on System Design, one side I was inspired and on the other side I felt ashamed because still I dont know those topics. Most of experience is on building client side applications, meaning I just need to make sure client application is perfomant with out any crashes. So I became strong in multithreading concepts, data structures and algorithms, mutexes, semaphores, locks and many other concepts that are necessary to build robust performant client side application. But I dont want to lag behind in the industry and I dont want to simply sit before my other colleagues who boast about system design skills with that expression on my face that I dont know. So I decided to learn System Design in a systematic & practical way. All the content of this blog is just the journey of me learning System Design from very basic and my thoughts while learning the System Design. I am preparing this blog for myself to revisit in future, but at the same time I hope it will also help you. Happy learning!!
 
-# Protocol
-Any business where owner of the business serving his clients over internet starts with simple architecture like below
-
+Solution for any business problem where users of the business connect to owner via internet starts with simple architecture like below.  
 ![image](https://github.com/user-attachments/assets/7f7ffe18-5ae6-4d99-8a44-d08e3484c7a5)
+
+For the learning purpose, I consider the following business scenario:
 
 Assume you are a software developer and a photographer came to you with thousands of photos of his wild photography. He asked you a to develop a client-server based solution where client applications can be given to users and server application he runs. He uploads all his latest photos and users can download them and they can use as wallpapers in their computers.
 
