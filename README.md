@@ -9,7 +9,7 @@ For the learning purpose, I consider the following business scenario:
 
 Assume you are a software developer and a photographer came to you with thousands of photos of his wild photography. He asked you a to develop a client-server based solution where client applications can be given to users and server application he runs. He uploads all his latest photos and users can download them and they can use as wallpapers in their computers.
 
-If I were you and a college going student, I would have start developing this solution some thing like below.
+If I were you and if I am a college going student, I would have start developing this solution some thing like below.
 
 I would have written client and server programs in C language using socket programming and I would have made these completely command prompt driven
 
@@ -18,7 +18,7 @@ I would have written client and server programs in C language using socket progr
 3. Server Application: To answer "Give me all images", it will send all image names.
 4. Server Application: To answer "Give me image <image_name>", it will send image with the name <image_name>.
    
-Though this solution seems straight forward, there are multiple complexities here.
+Though this solution seems straight forward, there are lot of things you need to handle make this solution working and covering aleast mimium scenarios .
 
 1. The client command should parsed properly.
 2. If client command is not expected format, server has to inform that command is not proper.
@@ -27,12 +27,19 @@ Though this solution seems straight forward, there are multiple complexities her
 5. If server is currently under maintainance, server has to send some response that is currently under maintainance.
 6. Once you address all these concerns in your solution, tomorrow photographer want to generate money from his photography. So he starts giving premium content only to those who paid him money. So we need a way how server identifies the user to serve the content. There should be a way client can send username. On receiving user name, server checks if user has access to image and then serve the image. If user dont have access, then server should be having a way to inform the user that he doesnt have enough previlages.
 
+Now suppose if another person and asked your friend to develop client<->server based solution for him for his all of his travelling videos. Users of the solution can download the videos from the server and watch. Your friend, if he is also a college going student, he may approach solving the problem like me 
 
-All of these concerns are there with any client <-> server based solution serving the content. If multiple business owners(one business owner serving images, one business owner serving videos, one business owner, text articles, and so on) wants similar solutions and goes to different software developers, all of those software developers fianlly has to develope similar modules except that the content is different. Solution to avoid this duplicate effort is software developers identified this duplicacy and all they came togehter and came up with a solution outlining how client request should look like to request a image/video/any other resource and how server should send the response and how server should inform the error. Now that all agreed on some format, if some developer developed a solution for images... now the same can be used for videos with few/some modifications.
+1. Client Application: To request all images it sends text "Provide all videos"
+2. Client Application: To request particular image "Provide video <video_name>"
+3. Server Application: To answer "Provide all videos", it will send all video names.
+4. Server Application: To answer "Provide video <video_name>", it will send video with the name <video_name>.
 
-The rules that software engineers agreed on how a client request should look and how shold be the response and how an error is informed is collectively called as Protocol.
 
-***A protocol is a set of rules that define how data is transmitted and received over a network***
+If you observe in those use cases just the content type is changing. Both developers approached the problem similarly and solved the problems. The solution provided by first developer for photos case will not work for videos, because Photos client application sends "Give me all images" command  and Videos client application sends "Provide all videos". If both developers decided to use "GET RESOURCES" command as image or video can be called as a resource, then the same implementation done by one developers could be useful for other developer. Similar instead of two different commands for getting one image or one video, if both developers decide to use "GET RESOURCE <RESOURCE_NAME>" then the solution could become reusable. 
+
+You see, if people sit together and agree to follow one single method to solve similar problems, then those solutions become reusable. This way of people coming together and agreeing onto set of guidelines or rules to solve similar problems is called "Drafting Protocol" where "Protocol" is those set of rules and guidelines.
+
+**Protocol: is a set of rules that define how data is transmitted and received over a network**
 
 # HTML, HTTP, Web Browser
 The problem with C based applications is that whenever we change client code we need to compile the application and distribute to clients. All computers are not same, they are different based on their processor types. So to deliver your new client application to all users, you need to compile your client code to all different variations of your clients processor and distribute them accordingly. Users will not able to use your new version of the client until users update the application. In order to solve this problem, we need a technology which doesnt require application compilation to distribute it to the users. One solution is you can develop one base software that is compiled and distribued once based on users processors and all further application logic of can be downloaded on the fly and can be executed by that base software. This base software is called ***Web Browser***. Web browser generally knows how to draw different kinds of Graphics. As per you application needs, in your application you just need to mention what all graphics you need, where you want to place them and what should be their properties. Web Browser on downloading this application logic, draws required graphics on screen as per the configuration.
