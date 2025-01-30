@@ -72,6 +72,7 @@ There are different kinds of REQUESTs each designed for serving different kind o
 * DELETE: Delete the resource in server (Unsafe/Idempotent)
 
 _Idempotent: If same operation is done multiple times, the effect is same._
+
 _Safe: Data on the server remains same_
 
 There are different kind of responses each indicating particular of kind of result process the request.
