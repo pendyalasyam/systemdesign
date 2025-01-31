@@ -83,7 +83,9 @@ There are different kind of responses each indicating particular of kind of resu
 * 5xx server error – the server failed to fulfil an apparently valid request
 
 # Brining up basic web solution
-* Installing Nginx
+Now that we understand what software is used as Client and what software software is used as Server and what technologies are used to establish communication between them, let us bring up the basic client-server infrastructure 
+***Setting up Web Server - Nginx:***
+
 * Index.html
 * Opening with browser
 
