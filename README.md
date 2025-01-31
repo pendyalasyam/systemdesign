@@ -129,6 +129,17 @@ I deployed Nginx and my website in the AWS machine and now I can access my websi
 Human beings are not good with remembering numbers, they are good with remembering names. So we need a system that remebers mapping between to names to ip addresses and when users request for names they get resolved to ip address. DNS is such system existing from 1983 and doing this job effectively for websites all over the world. Once we successfully register <websitename,ipaddress> in DNS then we can access our website like `<http://<websitedomainname>` from clients web browsers.
 
 # DNS Working Mechanism
+As of today, there are around 1.1 billion websites around the world. If one computer handles all this traffic, it will be lot of work load on single computer to handle and clients will experience delays in resolution. And also if that computer crashes or if there is power cut for that computer then nobody will be able to access websites with names. So to make this solution robust, DNS decentralized managing this huge mapping data. It divides entire DNS into different parts. Anybody wants to register theire domain(website) into DNS needs to register their domain names with in these parts. These higher level divisions are called Top-Level-Domains. One server holds ip addresses of all these Top-Level-Domains and this server is called Root Server. 
+
+When you enter `http://www.<websitename>.<TLD_Name>`, 
+* it first goes to DNS Resolver `(Called Recursive Resolver)` provided by your ISP to resolve `http://www.<websitename>.<TLD_Name>`. Recursive Resolver then contact Root Server to resolve `www.<websitename>.<TLD_Name>`
+* Since we registered our website in TLD, Root Server dont have information about `www.<websitename>.<TLD_Name>`. So it responds with TLD <TLD_Name>'s ip address to be contacted
+* Recursive Resolver then ask TLD <TLD_Name>
+* TLD knows the ip address of <websitename>.<TLD_Name>. So it responds with ip of `<websitename>.<TLD_Name>`
+* Recursive Resolver now has the ip address of server <websitename>.<TLD_Name>. This server which controls the name resolution for names in domain is called `Authoritative Name Server`. Recursive Resolver asks Authoritative Name Server to resolve `www.<websitename>.<TLD_Name>`. Authoritative Name Server knows the ip address of server which manages `www` for domain <websitename>.<TLD_Name>. So it responds with ip address
+* Recursive Resolver responds with this final ip address back to web server
+* Web Browser knows for http it needs to use port :80. So it resolves http://www.<websitename>.<TLD_Name> to final <IP-Address>:80 and sends the HTTP GET Request.
+
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
 To be able to be resolved by DNS, our website should be registered to DNS using DNS registars like GoDaddy, Namecheap, Google Domains, or Bluehost. DNS doesnt provide any access to users to be able add/remove DNS records as and when they want to do so. All DNS registrations should go through theses registars only. Registars perform KYC. KYC is important because, if Registars are not there and KYC is not done
