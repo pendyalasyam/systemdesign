@@ -94,7 +94,6 @@ Now that we understand what software is used as Client and what software softwar
       listen [::]:80;
       .
       .
-      server_name <youwebsitename> <www.yourwebsitename>;
       .
       .
    }
@@ -110,9 +109,10 @@ sudo systemctl restart nginx
 
 ***Opening with browser:***
 
-Open `http://www.<yourwebsitename>` in from the browser within the same computer and you will be able to see your application.
+Open `http://<your_computer_ipaddress>` from the browser within the same computer and you will be able to see your application.
 
 # How Clients Connect To Web Server ?
+Now you have web server up and running and your are able to computer from local computer. But your clients are not within the same computer and not even in the same private network you are connected. If you have 4 or 5 computers with in your house and all are connected to a home router then this is one private network. Similarly if 100 or so computers are connected your office router then that is another private network. Though these computers have different ip addresses, to the outer world these are all behind one ip address. So whatever the ip addres assigned for your computer is private to your network and only computers within this private network can access your website.  
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
 
 
