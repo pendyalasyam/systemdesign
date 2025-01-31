@@ -128,7 +128,7 @@ I deployed Nginx and my website in the AWS machine and now I can access my websi
 ## IP Address vs Domain Name
 Human beings are not good with remembering numbers, they are good with remembering names. So we need a system that remebers mapping between to names to ip addresses and when users request for names they get resolved to ip address. DNS is such system existing from 1983 and doing this job effectively for websites all over the world. Once we successfully register <websitename,ipaddress> in DNS then we can access our website like `<http://<websitedomainname>` from clients web browsers.
 
-## DNS Working Mechanism
+### DNS Working Mechanism
 As of today, there are around 1.1 billion websites around the world. If one computer handles all this traffic, it will be lot of work load on single computer to handle and clients will experience delays in resolution. And also if that computer crashes or if there is power cut for that computer then nobody will be able to access websites with names. So to make this solution robust, DNS decentralized managing this huge mapping data. It divides entire DNS into different parts. Anybody wants to register theire domain(website) into DNS needs to register their domain names with in these parts. These higher level divisions are called `Top-Level-Domains`. One server holds ip addresses of all these Top-Level-Domains and this server is called `Root Server`. 
 
 When you enter `http://www.<websitename>.<TLD_Name>`, 
@@ -155,12 +155,12 @@ So, in order to prevent these kind of scenarios, DNS delegated domain registarti
 
 For doing all this, we need to pay for Registars while registering our domain names.
 
-## A Note Of AnyCast IP Address
+### A Note Of AnyCast IP Address
 We understand that Name resolution start with Root Name Server. But what happens if those 13 Root Servers crash or fail. Since it is only 13 in count, it is highly possible right? So, DNS system designers folllowed one intelligent idea. They used AnyCast IP Addresses for Root Servers. AnyCast ip address makes it possible that multiple computers located at geographically different places share the same ip address. So for example A-Root-Server ip `198.41.0.4` doesnt mean one computer, its collection of computers located at different geographical locations and sharing the same ip address. When Recursive Resolver tries to contact A-Root-Server then it will be actually served by A-Root-Server's replica located near geographic location. This not only handle failures, but also improves system performance as whole. This is another reason for us to pay for DNS resolution, otherwise who will pay for all this infrastructure cost.
 
 AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big companies like Google, Microsoft, etc.
 
-## Buying domain name and configuring the DNS
+### Buying domain name and configuring the DNS
 1. Decide on the name that you want to use for your website
 2. Goto `https://www.godaddy.com/`
 3. Search for availability of your domain name, if avaialble observe the cost under each TLD
