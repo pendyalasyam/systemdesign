@@ -98,7 +98,6 @@ Now that we understand what software is used as Client and what software softwar
       .
       .
    }
-  
    ```
 4. systemctl start nginx
 ***First Application Written in HTML:***
