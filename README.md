@@ -112,18 +112,21 @@ sudo systemctl restart nginx
 Open `http://<your_computer_ipaddress>` from the browser within the same computer and you will be able to see your application.
 
 # Clients Connecting To Web Server Over Internet?
+## Private IP Address vs Public IP Address
 Now you have web server up and running and your are able to open your website from web browser with in your local computer. But your clients are not within the same computer and not even in the same private network you are connected. If you have 4 or 5 computers with in your house and all are connected to a home router then this is one private network. Similarly if 100 or so computers are connected your office router then that is another private network. Though these computers have different ip addresses, to the outer world these are all behind one ip address. So whatever the ip addres assigned for your computer is private to your network and only computers within this private network can access your website.  In order for your clients to be able to connect to your website, you need to get one public ip address for your computer.
 
-The ip address provided by local internet service providers are all private ip addresses. If you restart your computer your private ip address may also change.
+The ip address provided by local internet service providers are all private ip addresses. If not configured to be static, when you restart your computer your private ip address may also change.
 
 So private ip addresses are not suitable to use for web servers because of their nature that they are not accessbile outside your private network and if not configured properly they may keep changing.
 
-So, in order to make our service always available at the same place and publicly accessible we need public ip address that remains same for our computer. We call this kind of address as static public ip address. 
+So, in order to make our service always available at the same place and publicly accessible we need public ip address that remains same always for our computer in which Nginx is running. We call this kind of address as static public ip address. 
 
-I called my internet provider to provide me static public ip address, he told me it would cost me around Rs.250/month. For system design I wanted to experiment with 4 different computers but I have only one computer. If buy 3 extra small computers and one public ip address... it would cost me Rs. 30000 initially and Rs.250 every month. So I decided to use free computers provided by AWS. AWS provides 1 small computer with 1GB RAM and 30GB Disk space with public ip for 750hrs per month free per account . So I created 4 gmail accounts and at this time I created one t2.micro computer with one account. Yet to create another 3 computers. Now I have one computer which can run 24hr for free with public ip address and if I dont restart this public ip address will not change.
+I called my internet provider to provide me static public ip address, he told me it would cost me around Rs.250/month. For system design I wanted to experiment with 4 different computers but I have only one computer. If buy 3 extra small computers and one public ip address... it would cost me Rs. 30000 initially and Rs.250 every month. So I decided to use free computers provided by AWS. AWS provides 1 small computer with 1GB RAM and 30GB Disk space with public ip for 750hrs per month free per account . So I created 4 gmail accounts and at this time I created one t2.micro computer with one account. Yet to create another 3 computers. Now I have one computer which can run 24hr for free with public ip address and `if I dont restart` this public ip address will not change.
 
 I deployed Nginx and my website in the AWS machine and now I can access my website from around the world with `http://<AWS-IP-ADDR>`
 
+## IP Address vs Name
+Human beings are not good with remembering numbers, they are good with remembering names. So we need a system that remebers mapping between to names to ip addresses and when users request for names they get resolved to ip address. DNS is such system existing from 1983 and doing this job effectively for websites all over the world. Once we successfully register <websitename,ipaddress> in DNS then we can access our website like `<http://<websitedomainname>` from clients web browsers.
 
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
