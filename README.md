@@ -158,8 +158,20 @@ For doing all this, we need to pay for Registars while registering our domain na
 ## A Note Of AnyCast IP Address
 We understand that Name resolution start with Root Name Server. But what happens if those 13 Root Servers crash or fail. Since it is only 13 in count, it is highly possible right? So, DNS system designers folllowed one intelligent idea. They used AnyCast IP Addresses for Root Servers. AnyCast ip address makes it possible that multiple computers located at geographically different places share the same ip address. So for example A-Root-Server ip `198.41.0.4` doesnt mean one computer, its collection of computers located at different geographical locations and sharing the same ip address. When Recursive Resolver tries to contact A-Root-Server then it will be actually served by A-Root-Server's replica located near geographic location. This not only handle failures, but also improves system performance as whole. This is another reason for us to pay for DNS resolution, otherwise who will pay for all this infrastructure cost.
 
-## Buying domain name and configuring the DNS
+AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big companies like Google, Microsoft, etc.
 
+## Buying domain name and configuring the DNS
+1. Decide on the name that you want to use for your website
+2. Goto `https://www.godaddy.com/`
+3. Search for availability of your domain name, if avaialble observe the cost under each TLD
+4. Once decided with domain name and TLD you want to use, complete your KYC and buy
+5. Goto your domain as Profile -> My Products -> My Account -> Domains -> Select your domain
+6. Goto DNS Section
+7. For A Record, keep `@` for `Name` and edit `Data` to be your server public ip address
+8. Make sure changes are saved.
+9. It takes some time for registar to propagate your DNS information to all the DNS servers arounds the world. Wait
+10. Edit your Nginx configuration to make it behave as your <websitename>. In order to do this edit /etc/nginx/sites-available/default so that server_name is like below
+    `server_name <domainname> www.<domainname>;`
 # Problems with above simple Clients <-> Server architecture ?
 ***Single Point Of Failure:*** If the server crashes or power goes off or network gets disconnected, then clients can not reach to the server. This is undesirable for business. Assuem you are a restaurant owner who takes order online on your website and prepared 1000 meals assuming you may get 1000+ orders online. But what if your computer where web server is running crashes? Loss for the business right? So this is undesirable. You want your service to be up and running all the time during your business hours irrespective of crashes/power failures/network bottlenecks/etc. 
 
