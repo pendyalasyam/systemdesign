@@ -88,6 +88,7 @@ Now that we understand what software is used as Client and what software softwar
 ***Setting up Web Server - Nginx:***
 1. sudo apt install nginx -y
 2. edit /etc/nginx/sites-available/default such that it has following content for correspoding keys in _server_ section
+   ```
    server {
       listen 80;
       listen [::]:80;
@@ -97,7 +98,9 @@ Now that we understand what software is used as Client and what software softwar
       .
       .
    }
-3. systemctl start nginx
+  
+   ```
+4. systemctl start nginx
 ***First Application Written in HTML:***
 Write your first index.html page in /var/www/html
 
