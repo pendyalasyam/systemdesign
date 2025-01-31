@@ -172,7 +172,7 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 9. It takes some time for registar to propagate your DNS information to all the DNS servers arounds the world. It may take 1-48hrs. I observed it being completed in 2hrs.
 10. Edit your Nginx configuration to make it behave as your `<websitename>`. In order to do this edit /etc/nginx/sites-available/default so that server_name is like below
     `server_name <domainname> www.<domainname>;`
-11. Now you should be able to hit your server with http://www.<domainname> from any computer in the world.
+11. Now you should be able to hit your server with `http://www.<domainname>` from any computer in the world.
 
 
 # Problems with above simple Clients <-> Server architecture ?
