@@ -138,7 +138,7 @@ When you enter `http://www.<websitename>.<TLD_Name>`,
 * TLD knows the ip address of <websitename>.<TLD_Name>. So it responds with ip of `<websitename>.<TLD_Name>`
 * Recursive Resolver now has the ip address of server <websitename>.<TLD_Name>. This server which controls the name resolution for names in domain is called `Authoritative Name Server`. Recursive Resolver asks Authoritative Name Server to resolve `www.<websitename>.<TLD_Name>`. Authoritative Name Server knows the ip address of server which manages `www` for domain <websitename>.<TLD_Name>. So it responds with ip address
 * Recursive Resolver responds with this final ip address back to web server
-* Web Browser knows for http it needs to use port :80. So it resolves http://www.<websitename>.<TLD_Name> to final <IP-Address>:80 and sends the HTTP GET Request.
+* Web Browser knows for http it needs to use port :80. So it resolves `http://www.<websitename>.<TLD_Name>` to final <IP-Address>:80 and sends the HTTP GET Request.
 
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
