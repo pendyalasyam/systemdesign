@@ -175,12 +175,12 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 11. Now you should be able to hit your server with `http://www.<domainname>` from any computer in the world.
 
 ### DNS Records
-* A Record: Maps a domain to an IPv4 address.
-* AAAA Record: Maps a domain to an IPv6 address.
-* CNAME Record: Aliases one domain to another.
-* MX Record: Defines mail exchange servers for the domain.
-* TXT Record: Holds arbitrary text data, often for verification.
-* NS Record: Specifies authoritative name servers for the domain
+* **A Record:** Maps a domain to an IPv4 address.
+* **AAAA Record:** Maps a domain to an IPv6 address.
+* **CNAME Record:** Aliases one domain to another.
+* **MX Record:** Defines mail exchange servers for the domain.
+* **TXT Record:** Holds arbitrary text data, often for verification.
+* **NS Record:** Specifies authoritative name servers for the domain
 
 # Problems with above simple Clients <-> Server architecture ?
 ***Single Point Of Failure:*** If the server crashes or power goes off or network gets disconnected, then clients can not reach to the server. This is undesirable for business. Assuem you are a restaurant owner who takes order online on your website and prepared 1000 meals assuming you may get 1000+ orders online. But what if your computer where web server is running crashes? Loss for the business right? So this is undesirable. You want your service to be up and running all the time during your business hours irrespective of crashes/power failures/network bottlenecks/etc. 
