@@ -84,11 +84,28 @@ There are different kind of responses each indicating particular of kind of resu
 
 # Brining up basic web solution
 Now that we understand what software is used as Client and what software software is used as Server and what technologies are used to establish communication between them, let us bring up the basic client-server infrastructure 
+
 ***Setting up Web Server - Nginx:***
+1. sudo apt install nginx -y
+2. edit /etc/nginx/sites-available/default such that it has following content for correspoding keys in _server_ section
+   server {
+      listen 80;
+      listen [::]:80;
+      .
+      .
+      server_name <youwebsitename> <www.yourwebsitename>;
+      .
+      .
+   }
+3. systemctl start nginx
+***First Application Written in HTML:***
+Write your first index.html page in /var/www/html
 
-* Index.html
-* Opening with browser
+***Start Web Server:***
+sudo systemctl restart nginx
 
+***Opening with browser:***
+Open http://www.<yourwebsitename> in from the browser within the same computer and you will be able to see your application.
 
 # How Clients Connect To Web Server ?
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
