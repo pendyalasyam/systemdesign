@@ -169,9 +169,12 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 6. Goto DNS Section
 7. For A Record, keep `@` for `Name` and edit `Data` to be your server public ip address
 8. Make sure changes are saved.
-9. It takes some time for registar to propagate your DNS information to all the DNS servers arounds the world. Wait
-10. Edit your Nginx configuration to make it behave as your <websitename>. In order to do this edit /etc/nginx/sites-available/default so that server_name is like below
+9. It takes some time for registar to propagate your DNS information to all the DNS servers arounds the world. It may take 1-48hrs. I observed it being completed in 2hrs.
+10. Edit your Nginx configuration to make it behave as your `<websitename>`. In order to do this edit /etc/nginx/sites-available/default so that server_name is like below
     `server_name <domainname> www.<domainname>;`
+11. Now you should be able to hit your server with http://www.<domainname> from any computer in the world.
+
+
 # Problems with above simple Clients <-> Server architecture ?
 ***Single Point Of Failure:*** If the server crashes or power goes off or network gets disconnected, then clients can not reach to the server. This is undesirable for business. Assuem you are a restaurant owner who takes order online on your website and prepared 1000 meals assuming you may get 1000+ orders online. But what if your computer where web server is running crashes? Loss for the business right? So this is undesirable. You want your service to be up and running all the time during your business hours irrespective of crashes/power failures/network bottlenecks/etc. 
 
