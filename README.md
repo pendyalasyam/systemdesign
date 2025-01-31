@@ -155,7 +155,7 @@ So, in order to prevent these kind of scenarios, DNS delegated domain registarti
 
 For doing all this, we need to pay for Registars while registering our domain names.
 
-### A Note Of AnyCast IP Address
+### A Note On AnyCast IP Address
 We understand that Name resolution start with Root Name Server. But what happens if those 13 Root Servers crash or fail. Since it is only 13 in count, it is highly possible right? So, DNS system designers folllowed one intelligent idea. They used AnyCast IP Addresses for Root Servers. AnyCast ip address makes it possible that multiple computers located at geographically different places share the same ip address. So for example A-Root-Server ip `198.41.0.4` doesnt mean one computer, its collection of computers located at different geographical locations and sharing the same ip address. When Recursive Resolver tries to contact A-Root-Server then it will be actually served by A-Root-Server's replica located near geographic location. This not only handle failures, but also improves system performance as whole. This is another reason for us to pay for DNS resolution, otherwise who will pay for all this infrastructure cost.
 
 AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big companies like Google, Microsoft, etc.
