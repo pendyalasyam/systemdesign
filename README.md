@@ -111,9 +111,12 @@ sudo systemctl restart nginx
 
 Open `http://<your_computer_ipaddress>` from the browser within the same computer and you will be able to see your application.
 
-# How Clients Connect To Web Server ?
-Now you have web server up and running and your are able to computer from local computer. But your clients are not within the same computer and not even in the same private network you are connected. If you have 4 or 5 computers with in your house and all are connected to a home router then this is one private network. Similarly if 100 or so computers are connected your office router then that is another private network. Though these computers have different ip addresses, to the outer world these are all behind one ip address. So whatever the ip addres assigned for your computer is private to your network and only computers within this private network can access your website.  
-Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
+# Clients Connecting To Web Server Over Internet?
+Now you have web server up and running and your are able to open your website from web browser with in your local computer. But your clients are not within the same computer and not even in the same private network you are connected. If you have 4 or 5 computers with in your house and all are connected to a home router then this is one private network. Similarly if 100 or so computers are connected your office router then that is another private network. Though these computers have different ip addresses, to the outer world these are all behind one ip address. So whatever the ip addres assigned for your computer is private to your network and only computers within this private network can access your website.  In order for your clients to be able to connect to your website, you need to get one public ip address for your computer.
+
+I called my internet provider to provide me public ip address, he told me it would cost me around Rs.250/month. For system design I wanted to have 4 different computers. I have only one computer. So I decided to use free computers provided by AWS. AWS provides 1 small computer with 1GB RAM and 30GB Disk space with public ip for 750hrs per month free per account . So I created 4 gmail accounts and at this time I created one t2.micro computer with one account. Yet to create another 3 computers. Now I have one computer which can run 24hr for free with public ip address.
+
+I deployed Nginx and my website in the AWS machine and now I can access my website from around the world with `http://<AWS-IP-ADDR>`
 
 
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
