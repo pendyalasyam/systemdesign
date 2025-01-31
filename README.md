@@ -101,13 +101,16 @@ Now that we understand what software is used as Client and what software softwar
    ```
 
 ***First Application Written in HTML:***
+
 Write your first index.html page in /var/www/html
 
 ***Start Web Server:***
+
 sudo systemctl restart nginx
 
 ***Opening with browser:***
-Open http://www.<yourwebsitename> in from the browser within the same computer and you will be able to see your application.
+
+Open `http://www.<yourwebsitename>` in from the browser within the same computer and you will be able to see your application.
 
 # How Clients Connect To Web Server ?
 Server should be running on public ip. But it is difficult for users to remember ip addresses. So using DNS, we name ip address(like google) and we use name to connect to Web Server. DNS design itself is interesting design that handles name resolution for billions of websites every day. 
