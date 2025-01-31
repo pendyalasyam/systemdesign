@@ -145,12 +145,15 @@ When you enter `http://www.<websitename>.<TLD_Name>`,
 For the purpose of performance, resolved names are cached everywhere in the system. So when you browse the website, it is possible that returned ip address is cached ip address(cached in either web browser, cached in either operating system, cached in either TLD name server) and can be wrong not exactly pointing to the right ip address. Every resolved name response has a TTL (time-to-live). Once this time is expired for the record, resolver(web browser, operating system, TLD) must redo the resolution. The one that is correctly resolving the correct ip address of www.google.com is google.com server. Hence google.com server is authoritative name server for www.google.com. Similarly .com TLD server is the authoritative name server for google.com.
 
 
+To register website with DNS, we need to go registrar that checks if the name we want to give for our website already being used by anyone else or not, and does KYC and then registers our <website name, ipaddress> in DNS. Example DNS Registars: GoDaddy, Namecheap, Google Domains, or Bluehost
 
-To be able to be resolved by DNS, our website should be registered to DNS using DNS registars like GoDaddy, Namecheap, Google Domains, or Bluehost. DNS doesnt provide any access to users to be able add/remove DNS records as and when they want to do so. All DNS registrations should go through theses registars only. Registars perform KYC. KYC is important because, if Registars are not there and KYC is not done
+You may think why we need to go through registars and why cant DNS system itself give us some software to register our names in the DNS where this software handles the name conflicts. Consider the following case
 
 * one malicious user can impersonate another website just by changing one or two letters and registering to DNS. When users reach to this malicious website because of some small typo, this malicious site can do bad things like credentials stealing/presenting users with incorrect information, etc., In such cases, what can legitimate business owner do? No one to reach out right?
 
 So, in order to prevent these kind of scenarios, DNS delegated domain registartion work to registars and registars do the KYC properly and when things go wrong like above case they will involve into the issue and resolve the conflicts. Registars follow strict privacy rules as well and so they dont share information they collected during KYC until it is very necessary and required by law. For example, in JioHotstar case we still dont know who is that Delhi boy.
+
+For doing all this, we need to pay for Registars while registering our domain names.
 
 # Problems with above simple Clients <-> Server architecture ?
 ***Single Point Of Failure:*** If the server crashes or power goes off or network gets disconnected, then clients can not reach to the server. This is undesirable for business. Assuem you are a restaurant owner who takes order online on your website and prepared 1000 meals assuming you may get 1000+ orders online. But what if your computer where web server is running crashes? Loss for the business right? So this is undesirable. You want your service to be up and running all the time during your business hours irrespective of crashes/power failures/network bottlenecks/etc. 
