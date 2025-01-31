@@ -142,6 +142,10 @@ When you enter `http://www.<websitename>.<TLD_Name>`,
 
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
+For the purpose of performance, resolved names are cached everywhere in the system. So when you browse the website, it is possible that returned ip address is cached ip address(cached in either web browser, cached in either operating system, cached in either TLD name server) and can be wrong not exactly pointing to the right ip address. Every resolved name response has a TTL (time-to-live). Once this time is expired for the record, resolver(web browser, operating system, TLD) must redo the resolution. The one that is correctly resolving the correct ip address of www.google.com is google.com server. Hence google.com server is authoritative name server for www.google.com. Similarly .com TLD server is the authoritative name server for google.com.
+
+
+
 To be able to be resolved by DNS, our website should be registered to DNS using DNS registars like GoDaddy, Namecheap, Google Domains, or Bluehost. DNS doesnt provide any access to users to be able add/remove DNS records as and when they want to do so. All DNS registrations should go through theses registars only. Registars perform KYC. KYC is important because, if Registars are not there and KYC is not done
 
 * one malicious user can impersonate another website just by changing one or two letters and registering to DNS. When users reach to this malicious website because of some small typo, this malicious site can do bad things like credentials stealing/presenting users with incorrect information, etc., In such cases, what can legitimate business owner do? No one to reach out right?
