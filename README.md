@@ -125,9 +125,10 @@ I called my internet provider to provide me static public ip address, he told me
 
 I deployed Nginx and my website in the AWS machine and now I can access my website from around the world with `http://<AWS-IP-ADDR>`
 
-## IP Address vs Name
+## IP Address vs Domain Name
 Human beings are not good with remembering numbers, they are good with remembering names. So we need a system that remebers mapping between to names to ip addresses and when users request for names they get resolved to ip address. DNS is such system existing from 1983 and doing this job effectively for websites all over the world. Once we successfully register <websitename,ipaddress> in DNS then we can access our website like `<http://<websitedomainname>` from clients web browsers.
 
+# DNS Working Mechanism
 ![image](https://github.com/user-attachments/assets/4729c6fd-7ae8-4915-a970-cbcf875edc01)
 
 To be able to be resolved by DNS, our website should be registered to DNS using DNS registars like GoDaddy, Namecheap, Google Domains, or Bluehost. DNS doesnt provide any access to users to be able add/remove DNS records as and when they want to do so. All DNS registrations should go through theses registars only. Registars perform KYC. KYC is important because, if Registars are not there and KYC is not done
