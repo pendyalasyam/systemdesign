@@ -193,5 +193,17 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 
 
 
+## Ephemeral Ports
+## ulimit -n
+
+/etc/security/limits.conf
+
+* soft nofile 100000
+* hard nofile 100000
+
+* Save and exit. Then, restart your terminal or logout/login.
+
+* list of open connections * sudo ss -tnp | grep 17997 | wc -l
+
 
 
