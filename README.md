@@ -212,4 +212,5 @@ DB Replication:
 1. WAL based recovery is straight forward. Undo log based recovery can be done but replication is not straight forward
 2. WAL/Undo logs are definitely needed because some db writes are done on Virtual memory first and updated on actual physical disks
 3. DB backup is for disaster recovery and DB WALs are for system crashes.
+4. WALs are sequential so fast. Normal transactions may spread across different tables and indexes and operating on them directly may be slow. So better write to WALs for fastness.
 
