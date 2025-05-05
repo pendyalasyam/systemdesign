@@ -204,12 +204,12 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 * Save and exit. Then, restart your terminal or logout/login.
 
 
-DB Replication:
-1. WAL based recovery is straight forward. Undo log based recovery can be done but replication is not straight forward
-2. WAL/Undo logs are definitely needed because some db writes are done on Virtual memory first and updated on actual physical disks
-3. 
+
 
 * list of open connections * sudo ss -tnp | grep 17997 | wc -l
 
-
+DB Replication:
+1. WAL based recovery is straight forward. Undo log based recovery can be done but replication is not straight forward
+2. WAL/Undo logs are definitely needed because some db writes are done on Virtual memory first and updated on actual physical disks
+3. DB backup is for disaster recovery and DB WALs are for system crashes.
 
