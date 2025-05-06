@@ -208,9 +208,11 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 
 * list of open connections * sudo ss -tnp | grep 17997 | wc -l
 
-DB Replication:
+# Highly Available, Scalable, Relialbe DB Design
 1. WAL based recovery is straight forward. Undo log based recovery can be done but replication is not straight forward
 2. WAL/Undo logs are definitely needed because some db writes are done on Virtual memory first and updated on actual physical disks
 3. DB backup is for disaster recovery and DB WALs are for system crashes.
 4. WALs are sequential so fast. Normal transactions may spread across different tables and indexes and operating on them directly may be slow. So better write to WALs for fastness.
-
+5. Physical DB Replication Vs Logical DB Replication
+6. Synchronous Vs Asynchronous Replication : Synchronous replication is slow, Asynchronous synchronous fast. Synchronous replication is consistent, Asynchronous Replication is eventually consistent. For read heavy systems... have more followers
+7. Reading your own writes... try to read your own data from leader. But if there are lot of changing data for the user, it may  not scale as lot of reads go to leader only. Use time based forwarding to leader. For example if you asume after 1min all replicas will sync to master, then requests for own data within 1min after update to go to leader and all other requests after 1min to go to followers. Other approach, let the client send last update information in its request and let the request forward to any follower. If follower has data till that time, then request will be processed with follower or follower will wait to catch upto that point.
