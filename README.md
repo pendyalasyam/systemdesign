@@ -217,3 +217,9 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 6. Synchronous Vs Asynchronous Replication : Synchronous replication is slow, Asynchronous synchronous fast. Synchronous replication is consistent, Asynchronous Replication is eventually consistent. For read heavy systems... have more followers
 7. Reading your own writes... try to read your own data from leader. But if there are lot of changing data for the user, it may  not scale as lot of reads go to leader only. Use time based forwarding to leader. For example if you asume after 1min all replicas will sync to master, then requests for own data within 1min after update to go to leader and all other requests after 1min to go to followers. Other approach, let the client send last update information in its request and let the request forward to any follower. If follower has data till that time, then request will be processed with follower or follower will wait to catch upto that point.
 8. Monotonic Reads / Moving backwards in time.
+
+
+
+# Postgres Commands
+1. Starting Postgres Server instance: pg_ctl -D <data_directory> start
+2. Stoping Postgres Server instance: pg_ctl -D <data_directory> stop
