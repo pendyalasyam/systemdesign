@@ -218,6 +218,66 @@ AnyCast ip addressed is used by Top-Level-Domain Name Servers and other big comp
 7. Reading your own writes... try to read your own data from leader. But if there are lot of changing data for the user, it may  not scale as lot of reads go to leader only. Use time based forwarding to leader. For example if you asume after 1min all replicas will sync to master, then requests for own data within 1min after update to go to leader and all other requests after 1min to go to followers. Other approach, let the client send last update information in its request and let the request forward to any follower. If follower has data till that time, then request will be processed with follower or follower will wait to catch upto that point.
 8. Monotonic Reads / Moving backwards in time.
 
+# Keepalived
+**keepalived:
+1. Using this software, multiple physical devices share same virtual ip address. Only one of machine will be assigned with this ip address at a time.
+2. sudo apt update
+3. sudo apt install keepalived
+4. sudo apt install libipset13
+5. 
+
+vrrp_instance VI_1 {
+  state MASTER
+  interface eth0
+  virtual_router_id 55
+  priority 150
+  advert_int 1
+  unicast_src_ip 172.26.51.216
+  unicast_peer {
+    172.26.63.47
+    172.26.62.191
+  }
+
+  authentication {
+    auth_type PASS
+    auth_pass C3P9K9gc
+  }
+
+  virtual_ipaddress {
+    172.26.51.215/20
+  }
+}
+
+
+
+vrrp_instance VI_1 {
+  state BACKUP
+  interface eth0
+  virtual_router_id 55
+  priority 100
+  advert_int 1
+  unicast_src_ip 172.26.51.216
+  unicast_peer {
+    172.26.63.47
+    172.26.62.191
+  }
+
+  authentication {
+    auth_type PASS
+    auth_pass C3P9K9gc
+  }
+
+  virtual_ipaddress {
+    172.26.51.215/20
+  }
+}
+
+
+6. sudo systemctl enable --now keepalived.service
+7. sudo systemctl start keepalived.service
+8. sudo systemctl stop keepalived.service
+9. sudo systemctl restart keepalived.service**
+
 
 
 # Postgres Commands
