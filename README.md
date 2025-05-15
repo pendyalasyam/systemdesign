@@ -289,4 +289,4 @@ vrrp_instance VI_1 {
 # Highly available Postgres DB
 ![DistributedDatabaseDesign](https://github.com/user-attachments/assets/d96530e2-6f18-4473-8339-6cf7e99ea08c)
 
-## Scenario 1: What if only postgres-01 is up and all remaining nodes are down. Is db available?
+#### Scenario 1: What if only postgres-01 is up and all remaining nodes are down. Is db available?
