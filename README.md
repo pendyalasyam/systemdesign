@@ -290,3 +290,6 @@ vrrp_instance VI_1 {
 ![DistributedDatabaseDesign](https://github.com/user-attachments/assets/d96530e2-6f18-4473-8339-6cf7e99ea08c)
 
 #### Scenario 1: What if only postgres-01 is up and all remaining nodes are down. Is db available?
+Yes
+#### Scenario 1: Posgres-01 is master and Postgres-02, Postgres-3 are followers. Postgres-02, Postgres-03 gone down. System is still available. After some writes Postgres-01 also gone down. Postgres-02 , Postgres-03 came up. Is system available now? If system is available there will be data loss right?
+No. The system wont be up until Postgres-01 comes back. When writes are happening on postgres-01, the latest LSN information is maintained by patroni in etcd. So even when postgres-02, postgres-03 come back, patroni identifies they dont have latest information so they can not become master. So system will be still down . Once Postgres-01 comes back. It will be master and system continues from there.
