@@ -319,3 +319,42 @@ In All.... Replication is for availabilty & Read performance             and    
 * In case of log metric collection, we can partition data by datetime. There is no skew here. every day data goes to different partition. But suppose people observed some problem with some day in previous and they started investigating the data. As lot of investigater start accessing the data, that partitions traffic will be increased but there will not be any read traffic to other partitions. The one getting lot of read/write traffic while others are mostly idle is called hot spot. One machine is overhelmed while others are underutilzed. Avoid this. Do better resource utilization.
 * Use hash function over key and apply mod of available partitions. This will distribute load mostly evenly among partitions. While accessing the data use hash function with mod of available partitions on the key to get to know what is the partition for key.
 
+
+Problems we face while redistribution:
+
+1. suppose we added new partition p4 to partition group (p0, p1, p2, p3) where p0, p1, p2, p3 are on different nodes and are almost full.
+2. I think there has to be a controller who distributes the traffic
+3. controller knows when partition gets filled up and when to initiate redistribution
+4. do we need reserve any space on each node for the purpose of redistribution... suppose p0,p1,p2,p3 are completely fill and now while inserting
+new one controller got to know all partitions are filled and new partition is added... 
+
+now lets distribute following traffic to 5 nodes
+    p0 contains only 0,4,8,12,16
+    p1 contains only 1,5,9,13,17
+    p2 contains only 2,6,10,14,18
+    p3 contains only 3,7,11,15,19
+
+After distribution
+    p0 contains only 0,4,8,12,16
+    p1 contains only 1,5,9,13,17
+    p2 contains only 2,6,10,14,18
+    p3 contains only 3,7,11,15,19
+    p4 contains nothing
+
+now lets distribute following traffic to 5 nodes
+    p0 contains only 0,4,8,12,16
+    p1 contains only 1,5,9,13,17
+    p2 contains only 2,6,10,14,18
+    p3 contains only 3,7,11,15,19
+
+After distribution
+    p0 contains only 0,5,10,15
+    p1 contains only 1,6,11,16
+    p2 contains only 2,7,12,17
+    p3 contains only 3,8,13,18
+    p4 now contains  4,9,14,19
+
+data that got changed partitions 4,5,6,7,8,9,10,11,12,13,14,15,14,17,18,19.... you see lot of data getting redistribute... during this distribution we need to halt the reads
+otherwise we will encounter data loss problems while search for data while it is being distributed (removed from one place, added in another place, search happened in between) and this distribution is time taking also.
+
+so to improve the availability, we need to see how to minimize this key distribution when we are adding or removing partitions.
