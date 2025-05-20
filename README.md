@@ -293,3 +293,22 @@ vrrp_instance VI_1 {
 Yes
 #### Scenario 1: Posgres-01 is master and Postgres-02, Postgres-3 are followers. Postgres-02, Postgres-03 gone down. System is still available. After some writes Postgres-01 also gone down. Postgres-02 , Postgres-03 came up. Is system available now? If system is available there will be data loss right?
 No. The system wont be up until Postgres-01 comes back. When writes are happening on postgres-01, the latest LSN information is maintained by patroni in etcd. So even when postgres-02, postgres-03 come back, patroni identifies they dont have latest information so they can not become master. So system will be still down . Once Postgres-01 comes back. It will be master and system continues from there.
+
+
+# Replication vs Partitioning:
+Replication:
+
+* By replicating data in multiple nodes, if node goes down we can bring up other replica and serve the data. So availability will be improved.
+* If master node crashes, then all users will be impacted until one of follwer node is promoted.
+* By replicating data in multiple nodes, writes can be done on one server and reads can be done on another server. So performance of whole app can be improved.
+
+Partitioning:
+
+* By partitioning data, we can keep data belong to same context on different nodes. Means if we can keep max X amount of data on one node, ideally we can keep max X amount of data of specific context in single node. But if data is growing replication will not help because all replicas will have same data and so all replicas can be filled up. By partitioning data, if there are n nodes, then we can keep n * X of data on n instances. So we are improving scalability.
+* We can redirect traffic related to particular data towards the partition where that data is available. So we are improving performance also.
+* If we one partition crashes, only users those dependent on that partition data will be impacted. impact is reduced.
+* If partitioning is paired with replication, if partition crashes then traffic can be redirected to replica. Till the  new replica is elected as master, only users belonging to that partition data will be impacted.
+
+
+In All.... Replication is for availabilty & Read performance             and            Partitioning is for scalability and minimal impact.
+
