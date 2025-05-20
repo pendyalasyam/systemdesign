@@ -312,3 +312,10 @@ Partitioning:
 
 In All.... Replication is for availabilty & Read performance             and            Partitioning is for scalability and minimal impact.
 
+
+# How we partition data
+* If we want to partition user profiles data... we can use profile data of all users whose name starts with A - C in one partition, D - F in one partition, G - I in one partition...... U-Z in one partition. It not needed that only 3 letters has to be in a partition. We can choose whatever size we want to give to partition.
+* Most of the names start with either S/A/B... and very less users names start with letters Z/X.... so some partitions have lot of data and some partitions have close to no data... so data is skewed... we have to avoid skewing of data.
+* In case of log metric collection, we can partition data by datetime. There is no skew here. every day data goes to different partition. But suppose people observed some problem with some day in previous and they started investigating the data. As lot of investigater start accessing the data, that partitions traffic will be increased but there will not be any read traffic to other partitions. The one getting lot of read/write traffic while others are mostly idle is called hot spot. One machine is overhelmed while others are underutilzed. Avoid this. Do better resource utilization.
+* Use hash function over key and apply mod of available partitions. This will distribute load mostly evenly among partitions. While accessing the data use hash function with mod of available partitions on the key to get to know what is the partition for key.
+
