@@ -1,4 +1,5 @@
 Point#1: What we know is caching is for speeding up load times. But in reality, it is protect to DB.
+Point#2: In caching you choose acceptable wrongness.
 
 Caching Topics:
 1. Cache Hit / Cache Miss
