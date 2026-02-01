@@ -13,3 +13,9 @@ Rate Limiting Basis
 2. Per User
 3. Per Device
 4. Global
+
+Rate Limiting Procedure
+1. Request Hits API Gateway
+2. API Gateway checks with Rate Limiter service if it is ok go ahead with the request
+3. If  Rate Limiter Service says yes, then API Gateway forwards request to responsible micro service
+4. Or it will be rejected with Http Status Code: 429
