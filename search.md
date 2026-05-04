@@ -63,3 +63,41 @@ Postgres trgm search struggled to get all products containing biryani
 <img width="1646" height="447" alt="image" src="https://github.com/user-attachments/assets/4ec6023b-2611-4c4c-9f90-3b42438034ee" />
 
 <img width="1397" height="316" alt="image" src="https://github.com/user-attachments/assets/35bbd50d-a0ba-4266-820d-2a1c268eab54" />
+
+
+
+**if elastic search is durable enough, and if I dont require transactions for atomicity, isolation, consistency... then to store products information, just using elasticsearch is good enough right? why to use postgres as primary db ?**
+
+It is tempting to look at Elasticsearch's "durability" and conclude that Postgres is redundant, especially since you are building a search-heavy marketplace like BookMitra. However, as a Staff Engineer, you know that "durability" is only one pillar of a production database.
+
+Even if you don't need ACID transactions for a simple product catalog, there are several "Hidden Costs" to using Elasticsearch as your primary source of truth.
+
+1. The "Schema Rigidity" Paradox
+Elasticsearch is technically "schema-less," but in production, it is actually schema-brittle.
+
+In Postgres: If you decide to change a price column from an integer to a decimal, or rename a category, a simple ALTER TABLE handles it.
+
+In Elasticsearch: You cannot change the data type of a field in an existing index. You have to Reindex—meaning you create a new index and move all 350 million records into it. This is a massive operational headache for a 100GB+ dataset.
+
+2. Relational Integrity (Even without Transactions)
+Product data is rarely just a flat list. You have authors, publishers, categories, and inventory counts.
+
+Normalization: In Postgres, if a publisher changes their name, you update one row in a publishers table.
+
+Denormalization: In Elasticsearch, you typically flatten data for speed. If that publisher changes their name, you have to find and update millions of product documents. This leads to data drift where some products show the old name and others show the new one.
+
+3. Resource Cost (RAM vs. Disk)
+Elasticsearch is a "RAM-hungry" beast compared to Postgres.
+
+Postgres: Can handle 350M records comfortably on a single beefy machine because it is highly optimized for pulling data from disk when needed.
+
+Elasticsearch: To keep that 100ms search speed, ES needs a massive amount of memory for its "Filesystem Cache." Running a cluster capable of holding 350M records with high availability is significantly more expensive in cloud costs (AWS/Azure) than a single RDS instance.
+
+4. The "Source of Truth" Safety Net
+Elasticsearch is a complex distributed system. While it has the Translog for durability, it is susceptible to edge-case failures that Postgres solved decades ago:
+
+Mapping Explosions: A bad bulk upload can break your index mapping.
+
+Split Brain: In a cluster, network partitions can occasionally lead to versioning conflicts.
+
+Rebuildability: If your Elasticsearch index gets corrupted, and it’s your only database, you are out of business. If Postgres is your primary, you just trigger a re-index script and you're back online in a few hours.
