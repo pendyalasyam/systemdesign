@@ -36,3 +36,26 @@ Postgres sees "Running" and "Run" as different words unless you use complex Full
 The UX Gap: Elasticsearch handles Stemming (understanding word roots) and Synonyms (searching "Cell phone" finds "iPhone") out of the box.
 
 Typo Tolerance: While pg_trgm helps with typos, it isn't as tunable as Elasticsearch’s "Fuzziness" parameters, which allow you to control exactly how many character "edits" a user can make.
+
+
+
+
+Postgres trgm search struggled to get all products containing biryani
+
+=# EXPLAIN ANALYZE SELECT count(*) FROM productsWHERE name % 'biryani' ;
+                                                                           QUERY PLAN
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=448441.39..448441.40 rows=1 width=8) (actual time=64992.987..65016.227 rows=1 loops=1)
+   ->  Gather  (cost=448441.17..448441.38 rows=2 width=8) (actual time=64991.195..65016.217 rows=3 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Partial Aggregate  (cost=447441.17..447441.18 rows=1 width=8) (actual time=64958.322..64958.324 rows=1 loops=3)
+               ->  Parallel Bitmap Heap Scan on products  (cost=10187.08..447330.54 rows=44252 width=0) (actual time=1098.157..64890.551 rows=113227 loops=3)
+                     Recheck Cond: ((name)::text % 'biryani'::text)
+                     Rows Removed by Index Recheck: 5462788
+                     Heap Blocks: exact=14908 lossy=139658
+                     ->  Bitmap Index Scan on idx_product_search  (cost=0.00..10160.53 rows=106204 width=0) (actual time=1108.898..1108.898 rows=640539 loops=1)
+                           Index Cond: ((name)::text % 'biryani'::text)
+ Planning Time: 23.897 ms
+ **Execution Time: 65016.682 ms**
+(13 rows)
