@@ -109,3 +109,4 @@ Rebuildability: If your Elasticsearch index gets corrupted, and it’s your only
 <img width="773" height="494" alt="image" src="https://github.com/user-attachments/assets/e6d669b3-4b30-40a9-ac31-7eb27eee0e11" />
 
 
+https://www.youtube.com/watch?v=PuZvF2EyfBM&t=656s
