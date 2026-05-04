@@ -59,3 +59,6 @@ Postgres trgm search struggled to get all products containing biryani
  Planning Time: 23.897 ms
  **Execution Time: 65016.682 ms**
 (13 rows)
+
+<img width="1646" height="447" alt="image" src="https://github.com/user-attachments/assets/4ec6023b-2611-4c4c-9f90-3b42438034ee" />
+
