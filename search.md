@@ -101,3 +101,7 @@ Mapping Explosions: A bad bulk upload can break your index mapping.
 Split Brain: In a cluster, network partitions can occasionally lead to versioning conflicts.
 
 Rebuildability: If your Elasticsearch index gets corrupted, and it’s your only database, you are out of business. If Postgres is your primary, you just trigger a re-index script and you're back online in a few hours.
+
+
+<img width="836" height="385" alt="image" src="https://github.com/user-attachments/assets/7cc6fead-9057-4d83-be24-22a11f8d4983" />
+
