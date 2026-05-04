@@ -110,3 +110,11 @@ Rebuildability: If your Elasticsearch index gets corrupted, and it’s your only
 
 
 https://www.youtube.com/watch?v=PuZvF2EyfBM&t=656s
+
+<img width="739" height="155" alt="image" src="https://github.com/user-attachments/assets/5ccd5012-154e-4afe-9bd3-74700b0f4d88" />
+
+<img width="1893" height="555" alt="image" src="https://github.com/user-attachments/assets/a3592c15-c402-44fe-9445-2142bc64f413" />
+
+You see elastic is blazing fast
+
+
