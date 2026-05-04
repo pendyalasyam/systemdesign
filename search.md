@@ -62,3 +62,4 @@ Postgres trgm search struggled to get all products containing biryani
 
 <img width="1646" height="447" alt="image" src="https://github.com/user-attachments/assets/4ec6023b-2611-4c4c-9f90-3b42438034ee" />
 
+<img width="1397" height="316" alt="image" src="https://github.com/user-attachments/assets/35bbd50d-a0ba-4266-820d-2a1c268eab54" />
